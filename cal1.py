@@ -23,7 +23,7 @@ def divide(num1, num2):
 
 
 # operation
-def oper(choice, num1, num2):
+def operation(choice, num1, num2):
     match choice:
         case 1:
             print(add(num1, num2))
@@ -40,5 +40,11 @@ def oper(choice, num1, num2):
 num1 = int(input("Enter first number: "))
 num2 = int(input("Enter second number: "))
 
-choice = int(input("Which opetion you want to perform?\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\nChoice: "))
-answer = oper(choice, num1, num2)
+print()
+print("Which operation do you want to perform?")
+print("1. Addition")
+print("2. Subtraction")
+print("3. Multiplication")
+print("4. Division")
+choice = int(input("Choice: "))
+answer = operation(choice, num1, num2)
