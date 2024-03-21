@@ -18,10 +18,6 @@ def main():
     b1 = cal_gui.proceedBtn(f)  # Proceed button
     b2 = cal_gui.exitBtn(f, w)  # Exit button
 
-    if cal_gui.proceedFrame[2] == 1:
-        f = cal_gui.proceedFrame()
-        n = 1
-
     print(n)
     w.mainloop()
 
