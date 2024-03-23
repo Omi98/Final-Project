@@ -1,24 +1,30 @@
 # imports
 from tkinter import *
 import tkinter as tk
+import sys
 
 
-# global vars
-global pBtn
+global proceed
 
 
 # main
 def main():
     cal_gui = CalculatorGUI()
     w = cal_gui.createWindow()  # create window
-    f = cal_gui.welcomeFrame(w)  # create welcome frame
-    n = 0
+    f1 = cal_gui.welcomeFrame(w)  # create welcome frame
 
-    l1 = cal_gui.welcomeLabel(f)  # display welcome text
-    b1 = cal_gui.proceedBtn(f)  # Proceed button
-    b2 = cal_gui.exitBtn(f, w)  # Exit button
+    l1 = cal_gui.welcomeLabel(f1)  # display welcome text
+    b1 = cal_gui.proceedBtn(f1)  # Proceed button
+    b2 = cal_gui.exitBtn(f1, w)  # Exit button
 
-    print(n)
+    # check if widget exists 
+    frameExists =  cal_gui.proceedFrame(w).winfo_exists()
+    if frameExists == 1:
+        pass
+    else:
+        sys.exit("No frame found")
+    f2 = cal_gui.proceedFrame(w)
+
     w.mainloop()
 
 
@@ -30,8 +36,8 @@ class Calculator:
 
 # class - calculator GUI
 class CalculatorGUI:
-    global pBtn
-    pBtn = None
+    global proceed
+    proceed = 0
 
     def __init__(self):
         ...
@@ -47,13 +53,12 @@ class CalculatorGUI:
         self.wFrame.pack(anchor=CENTER)
         return self.wFrame
     
-    def proceedFrame(self):
+    def proceedFrame(self, myWindow):
         self.wFrame.destroy()
         # create new frame (Frame 2)
-        self.pFrame = LabelFrame(self.myWindow, text="Success!", padx=15, pady=30)
+        self.pFrame = LabelFrame(myWindow, text="Success!", padx=15, pady=30)
         self.pFrame.pack(anchor=CENTER)
-        pBtn = 1
-        return self.pFrame, pBtn
+        return self.pFrame
     
     def welcomeLabel(self, wFrame):
         self.myLabel = Label(wFrame, text="Welcome to Calculator", font=("Arial", 20))
